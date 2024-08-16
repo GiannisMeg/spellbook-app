@@ -21,11 +21,11 @@ import {
 } from "@/components/ui/table";
 
 import { trpc } from "@/server/client";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import useSpellbookStore from "@/store/spellbookStore";
 
-//without + complains because of the string format but we change it to number
+//+ added to avoid complains, string format turn it to number
 export default function SpellbookPage({
 	params,
 }: {
@@ -38,7 +38,6 @@ export default function SpellbookPage({
 	const addSpell = trpc.spells.create.useMutation();
 	const delSpell = trpc.spells.delete.useMutation();
 
-	//follow same logic like spellbook
 	const addNewSpell = () => {
 		//prevent undefined
 		if (!spellbook.data?.id) {
@@ -62,11 +61,9 @@ export default function SpellbookPage({
 					title,
 					description,
 					spellbookId: spellbook.data?.id,
-					//wrap file name `/${file.name}
 					image: `/${file.name}`,
 				},
 				{
-					//function added instead to be asynchronous no refresh needed
 					onSettled: () => spellbook.refetch(),
 				}
 			);
@@ -83,7 +80,6 @@ export default function SpellbookPage({
 				id,
 			},
 			{
-				//async func
 				onSettled: () => spellbook.refetch(),
 			}
 		);

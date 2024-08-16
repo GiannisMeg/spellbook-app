@@ -1,4 +1,4 @@
-//upload logic close to node js work wise
+//upload logic work wise close to node js
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import { promisify } from "util";

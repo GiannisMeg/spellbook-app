@@ -16,7 +16,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "../ui/dialog";
-import { useState } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Image from "next/image";
@@ -29,7 +28,7 @@ export default function Spellbook() {
 	//call mutation
 	const addSpellbook = trpc.spellbooks.create.useMutation();
 
-	// // zustand can be replace the states
+	// replaced by zustand
 	// const [title, setTitle] = useState<string>("");
 	// const [description, setDescription] = useState<string>("");
 
@@ -47,6 +46,7 @@ export default function Spellbook() {
 		//// Reset fields after adding a spellbook
 		// setTitle("");
 		// setDescription("");
+		////using zustand state
 		resetFields();
 	};
 

@@ -100,7 +100,9 @@ export default function SpellbookPage({
 		<div className="p-24">
 			<Dialog>
 				<DialogTrigger asChild>
-					<Button>Add Spell</Button>
+					<Button style={{ border: "solid 0.3px #e6e6ff" }}>
+						Add Spell
+					</Button>
 				</DialogTrigger>
 				<DialogContent>
 					<DialogHeader>
@@ -127,16 +129,26 @@ export default function SpellbookPage({
 				</DialogContent>
 			</Dialog>
 			<Table>
-				<TableCaption>Spells from {spellbook.data?.title}.</TableCaption>
+				<TableCaption style={{ color: "#e6e6ff" }}>
+					Spells from {spellbook.data?.title}.
+				</TableCaption>
 				<TableHeader>
 					<TableRow>
-						<TableHead>Title</TableHead>
-						<TableHead>Description</TableHead>
-						<TableHead>Image</TableHead>
-						<TableHead>Delete</TableHead>
+						<TableHead style={{ color: "#e6e6ff", fontSize: "16px" }}>
+							Title
+						</TableHead>
+						<TableHead style={{ color: "#e6e6ff", fontSize: "16px" }}>
+							Description
+						</TableHead>
+						<TableHead style={{ color: "#e6e6ff", fontSize: "16px" }}>
+							Image
+						</TableHead>
+						<TableHead style={{ color: "#e6e6ff", fontSize: "16px" }}>
+							Delete
+						</TableHead>
 					</TableRow>
 				</TableHeader>
-				<TableBody>
+				<TableBody style={{ color: "#e6e6ff" }}>
 					{spellbook.data?.spells.map((spell) => (
 						<TableRow key={spell.id}>
 							<TableCell>{spell.title}</TableCell>

@@ -56,7 +56,7 @@ export default function Spellbook() {
 			{spellbooks.data?.map((spellbook) => (
 				//Link card with added spells
 				<Link key={spellbook.id} href={`/spellbook/${spellbook.id}`}>
-					<Card>
+					<Card style={{ backgroundColor: "#e6e6ff" }}>
 						<CardHeader>
 							<CardTitle>{spellbook.title}</CardTitle>
 							<CardDescription>{spellbook.description}</CardDescription>
@@ -79,7 +79,10 @@ export default function Spellbook() {
 			<Dialog>
 				{/* asChild to get the right format */}
 				<DialogTrigger asChild>
-					<Card className="flex justify-center items-center cursor-pointer">
+					<Card
+						style={{ backgroundColor: "#e6e6ff" }}
+						className="flex justify-center items-center cursor-pointer"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"

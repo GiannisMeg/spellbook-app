@@ -23,6 +23,7 @@ import {
 import { trpc } from "@/server/client";
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import useSpellbookStore from "@/store/spellbookStore";
 
 //without + complains because of the string format but we change it to number
 export default function SpellbookPage({
@@ -61,6 +62,7 @@ export default function SpellbookPage({
 					title,
 					description,
 					spellbookId: spellbook.data?.id,
+					//wrap file name `/${file.name}
 					image: `/${file.name}`,
 				},
 				{
@@ -69,8 +71,9 @@ export default function SpellbookPage({
 				}
 			);
 
-			setTitle("");
-			setDescription("");
+			resetFields();
+			// setTitle("");
+			// setDescription("");
 		}
 	};
 
@@ -87,8 +90,13 @@ export default function SpellbookPage({
 	};
 
 	// zustand to replace state
-	const [title, setTitle] = useState<string>("");
-	const [description, setDescription] = useState<string>("");
+	// const [title, setTitle] = useState<string>("");
+	// const [description, setDescription] = useState<string>("");
+
+	// Get state and actions from the Zustand store
+	const { title, description, setTitle, setDescription, resetFields } =
+		useSpellbookStore();
+
 	//upload ref
 	const fileRef = useRef<HTMLInputElement>(null);
 

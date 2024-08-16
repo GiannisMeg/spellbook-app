@@ -21,15 +21,21 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
+//import store
+import useSpellbookStore from "@/store/spellbookStore";
 
 export default function Spellbook() {
 	const spellbooks = trpc.spellbooks.get.useQuery();
 	//call mutation
 	const addSpellbook = trpc.spellbooks.create.useMutation();
 
-	// zustand can be replace the states
-	const [title, setTitle] = useState<string>("");
-	const [description, setDescription] = useState<string>("");
+	// // zustand can be replace the states
+	// const [title, setTitle] = useState<string>("");
+	// const [description, setDescription] = useState<string>("");
+
+	// Get state and actions from the Zustand store
+	const { title, description, setTitle, setDescription, resetFields } =
+		useSpellbookStore();
 
 	// create function after we created mutation and call it
 	const addNewSpellbook = () => {
@@ -38,8 +44,10 @@ export default function Spellbook() {
 			description,
 		});
 
-		setTitle("");
-		setDescription("");
+		//// Reset fields after adding a spellbook
+		// setTitle("");
+		// setDescription("");
+		resetFields();
 	};
 
 	return (
